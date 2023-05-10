@@ -37,7 +37,7 @@ def get_data(filters):
 
 def get_columns():
 	return [
-		"Customer:Data:200",
+		"Customer:Data:250",
 		"Total Disbursed Amount:Currency:200",
 		"Total Payments:Currency:200",
 		"Total Amount Paid:Currency:200",

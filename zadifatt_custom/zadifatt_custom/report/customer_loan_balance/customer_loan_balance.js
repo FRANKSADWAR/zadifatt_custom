@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 /* eslint-disable */
 
-frappe.query_reports["Loan Interests Report"] = {
+frappe.query_reports["Customer Loan Balance"] = {
 	"filters": [
 		{
 			fieldname: 'applicant',

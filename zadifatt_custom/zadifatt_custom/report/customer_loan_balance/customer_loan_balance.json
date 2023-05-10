@@ -10,7 +10,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "Sales Orders Test",
- "modified": "2023-05-10 11:28:34.209635",
+ "modified": "2023-05-10 11:35:40.316009",
  "modified_by": "Administrator",
  "module": "Zadifatt Custom",
  "name": "Customer Loan Balance",
@@ -21,13 +21,13 @@
  "report_type": "Script Report",
  "roles": [
   {
-   "role": "Loan Manager"
-  },
-  {
-   "role": "Employee Self Service"
+   "role": "System Manager"
   },
   {
    "role": "Accounts Manager"
+  },
+  {
+   "role": "Loan Manager"
   },
   {
    "role": "Accounts User"
