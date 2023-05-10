@@ -5,7 +5,7 @@
 import frappe
 
 def execute(filters=None):
-	columns = []
+	columns = get_columns()
 	data = get_data(filters)
 	return columns, data
 
@@ -22,12 +22,24 @@ def get_data(filters):
 	if (filters.get('applicant')):
 		conditions  += f"AND applicant ='{filters.get('applicant')}'"
 
-	
-	
-	query_2 = f"""
-				select applicant, sum(disbursed_amount) AS `Total Disbursed Amount`, SUM(total_payment) AS `Total Payments`, SUM(total_amount_paid) AS `Total Amount Paid`,
-        		(SUM(total_payment)-SUM(total_amount_paid)) AS `Payment Balance` FROM tabLoan WHERE status <> 'Sanctioned' AND (disbursement_date BETWEEN 
+	if filters.get('from_date') > filters.get('to_date'):
+		frappe.throw("From date cannot be greater than to date {}".format(filters.get('to_date')))
+	query = f"""
+				select applicant AS Customer, sum(disbursed_amount) AS `Total Disbursed Amount`, SUM(total_payment) AS `Total Payments`, SUM(total_amount_paid) AS `Total Amount Paid`,
+        		(SUM(total_payment)-SUM(total_amount_paid)) AS `Payment Balance` FROM tabLoan WHERE {conditions} AND status <> 'Sanctioned' AND (disbursement_date BETWEEN 
 				'{from_date}' AND '{to_date}') GROUP BY applicant;
-
-				
 				"""
+	
+	data = frappe.db.sql(query)
+
+	return data
+
+def get_columns():
+	return [
+		"Customer:Link:100",
+		"Total Disbursed Amount:Currency:100",
+		"Total Payments:Currency:100",
+		"Total Amount Paid:Currency:100",
+		"Payment Balance:Currency:100"
+	]
+
