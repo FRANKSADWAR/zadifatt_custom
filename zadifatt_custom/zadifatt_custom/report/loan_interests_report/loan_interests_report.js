@@ -10,15 +10,12 @@ frappe.query_reports["Loan Interests Report"] = {
 			fieldtype: 'Link',
 			reqd: 0,
 			width: 100,
-			options: 'Customer'
 		},
 		{
 			fieldname: 'name',
 			label: __('Loan'),
-			fieldtype: 'Link',
+			fieldtype: 'Data',
 			width: 100,
-			options: 'Loan'
-
 		},
 		{
 			fieldname: 'status',
@@ -29,8 +26,8 @@ frappe.query_reports["Loan Interests Report"] = {
 			width: 50,
 		},
 		{
-			fieldname: 'start_date',
-			label: __('Start Date'),
+			fieldname: 'from_date',
+			label: __('From Date'),
 			fieldtype: 'Date',
 			default: frappe.datetime.add_months(frappe.datetime.get_today(),-1),
 			width: 80

@@ -17,7 +17,7 @@ def get_data(filters):
 		conditions += f"AND status='{filters.get('status')}' "
 
 	if (filters.get('name')):
-		conditions += f"AND loan='{filters.get('name')}'"
+		conditions += f"AND name='{filters.get('name')}'"
 
 	if (filters.get('applicant')):
 		conditions  += f"AND applicant ='{filters.get('applicant')}'"
