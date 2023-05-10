@@ -14,20 +14,21 @@ def get_data(filters):
 	conditions ="1=1"
 
 	if(filters.get('status')):
-		conditions += f"AND status='{filters.get('status')}' "
+		conditions += f" AND status='{filters.get('status')}' "
 
 	if (filters.get('name')):
-		conditions += f"AND name='{filters.get('name')}'"
+		conditions += f" AND name='{filters.get('name')}'"
 
 	if (filters.get('applicant')):
-		conditions  += f"AND applicant ='{filters.get('applicant')}'"
+		conditions  += f" AND applicant ='{filters.get('applicant')}'"
 
 	if filters.get('from_date') > filters.get('to_date'):
 		frappe.throw("From date cannot be greater than to date {}".format(filters.get('to_date')))
 	query = f"""
-				select applicant AS Customer, sum(disbursed_amount) AS `Total Disbursed Amount`, SUM(total_payment) AS `Total Payments`, SUM(total_amount_paid) AS `Total Amount Paid`,
-        		(SUM(total_payment)-SUM(total_amount_paid)) AS `Payment Balance` FROM tabLoan WHERE {conditions} AND status <> 'Sanctioned' AND (disbursement_date BETWEEN 
-				'{from_date}' AND '{to_date}') GROUP BY applicant;
+				SELECT applicant AS Customer, sum(disbursed_amount) AS `Total Disbursed Amount`, SUM(total_payment) AS `Total Payments`, 
+				SUM(total_amount_paid) AS `Total Amount Paid`,
+        		(SUM(total_payment)-SUM(total_amount_paid)) AS `Payment Balance` FROM `tabLoan` WHERE {conditions} AND status <> 'Sanctioned' 
+				AND (disbursement_date BETWEEN '{from_date}' AND '{to_date}') GROUP BY applicant;
 				"""
 	
 	data = frappe.db.sql(query)
@@ -36,10 +37,10 @@ def get_data(filters):
 
 def get_columns():
 	return [
-		"Customer:Link:100",
-		"Total Disbursed Amount:Currency:100",
-		"Total Payments:Currency:100",
-		"Total Amount Paid:Currency:100",
-		"Payment Balance:Currency:100"
+		"Customer:Data:200",
+		"Total Disbursed Amount:Currency:200",
+		"Total Payments:Currency:200",
+		"Total Amount Paid:Currency:200",
+		"Payment Balance:Currency:200"
 	]
 
