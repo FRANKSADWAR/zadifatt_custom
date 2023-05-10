@@ -21,8 +21,13 @@ def get_data(filters):
 
 	if (filters.get('applicant')):
 		conditions  += f"AND applicant ='{filters.get('applicant')}'"
-		
 
-	query = f""" SELECT name,applicant,loan_type, disbursed_amount, repayment_start_date,total_payment, total_amount_paid,status AS loan_status, 
-				(total_payment-total_amount_paid) AS payment_balance FROM `tabLoan` WHERE         
-				status IN ('Disbursed','Closed') GROUP BY applicant"""
+	
+	
+	query_2 = f"""
+				select applicant, sum(disbursed_amount) AS `Total Disbursed Amount`, SUM(total_payment) AS `Total Payments`, SUM(total_amount_paid) AS `Total Amount Paid`,
+        		(SUM(total_payment)-SUM(total_amount_paid)) AS `Payment Balance` FROM tabLoan WHERE status <> 'Sanctioned' AND (disbursement_date BETWEEN 
+				'{from_date}' AND '{to_date}') GROUP BY applicant;
+
+				
+				"""
