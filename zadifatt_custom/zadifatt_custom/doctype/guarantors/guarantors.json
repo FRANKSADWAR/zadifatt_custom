@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "full_name",
+ "autoname": "LG-.YYYY.-.#####",
  "creation": "2023-05-10 12:02:23.537202",
  "default_view": "List",
  "doctype": "DocType",
@@ -25,28 +25,38 @@
  ],
  "fields": [
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "first_name",
    "fieldtype": "Data",
+   "in_filter": 1,
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "First Name",
    "reqd": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "last_name",
    "fieldtype": "Data",
+   "in_filter": 1,
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Last Name",
    "reqd": 1
   },
   {
    "fieldname": "full_name",
    "fieldtype": "Data",
-   "label": "Full Name"
+   "label": "Full Name",
+   "read_only": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "phone_number",
    "fieldtype": "Data",
+   "in_filter": 1,
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Phone Number",
    "reqd": 1
   },
@@ -55,6 +65,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "email_address",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -62,6 +73,7 @@
    "reqd": 1
   },
   {
+   "allow_in_quick_entry": 1,
    "fieldname": "location",
    "fieldtype": "Data",
    "label": "Location",
@@ -104,12 +116,12 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-10 12:02:23.537202",
+ "modified": "2023-05-10 15:56:02.774971",
  "modified_by": "Administrator",
  "module": "Zadifatt Custom",
  "name": "Guarantors",
  "name_case": "UPPER CASE",
- "naming_rule": "By fieldname",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {
@@ -161,7 +173,7 @@
    "write": 1
   }
  ],
- "search_fields": "full_name,location,phone_number",
+ "quick_entry": 1,
  "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",

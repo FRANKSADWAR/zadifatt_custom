@@ -185,3 +185,4 @@ app_license = "MIT"
 # auth_hooks = [
 #	"zadifatt_custom.auth.validate"
 # ]
+fixtures = ["Custom Field"]
