@@ -30,7 +30,7 @@ app_license = "MIT"
 
 # include js in doctype views
 
-doctype_js = {"Loan" : "zadifatt_custom/zadifatt_custom/public/js/loan_start_date.js"}
+doctype_js = {"Loan" : "public/js/loan_start_date.js"}
 
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
