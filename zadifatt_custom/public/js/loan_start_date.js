@@ -6,7 +6,7 @@ frappe.ui.form.on('Loan', {
         frm.set_query("customer_name",function(){
 			return {
 				"filters":[
-					["customer_name", "!=", frm.doc.applicant]
+					["customer_name","!=", frm.doc.applicant]
 				]
 			}
 		});
