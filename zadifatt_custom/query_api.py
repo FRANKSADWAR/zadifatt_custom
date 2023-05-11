@@ -15,5 +15,5 @@ def filter_defaulted_customers(doctype, txt, searchfield, start, page_len, filte
     if filters and filters.get("customer_name"):
 	    mid_section_query += " AND applicant <> {customer_name}".format(
 	        customer_name=frappe.db.escape(filters.get("customer_name")))
-
+        
     return frappe.db.sql(query, filters)
