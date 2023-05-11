@@ -2,13 +2,12 @@
 // For license information, please see license.txt
 /* eslint-disable */
 
-frappe.query_reports["Loan Interests Report"] = {
+frappe.query_reports["Customer Loan Balance"] = {
 	"filters": [
 		{
 			fieldname: 'applicant',
 			label: __('Applicant'),
 			fieldtype: 'Link',
-			reqd: 0,
 			width: 100,
 			options: 'Customer'
 		},
@@ -18,19 +17,18 @@ frappe.query_reports["Loan Interests Report"] = {
 			fieldtype: 'Link',
 			width: 100,
 			options: 'Loan'
-
 		},
 		{
 			fieldname: 'status',
 			label: __('Status'),
 			fieldtype: 'Select',
-			options: ['Disbursed','Loan Closure Requested','Closed','Partially Disbursed'],
+			options: ['','Disbursed','Loan Closure Requested','Closed','Partially Disbursed'],
 			default: "",
 			width: 50,
 		},
 		{
-			fieldname: 'start_date',
-			label: __('Start Date'),
+			fieldname: 'from_date',
+			label: __('From Date'),
 			fieldtype: 'Date',
 			default: frappe.datetime.add_months(frappe.datetime.get_today(),-1),
 			width: 80
